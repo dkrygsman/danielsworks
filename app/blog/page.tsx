@@ -1,8 +1,10 @@
 import { posts } from "#site/content";
 import { PostItem } from "@/components/ui/posts-item";
+import { sortPosts } from "@/lib/utils";
 
 export default async function BlogPage() {
-    const displayPosts = posts;
+    const sortedPosts = sortPosts(posts.filter((post) => post.published));
+    const displayPosts = sortedPosts;
 
     return (
         <div className="container max-w-4xl py-6 lg:py-10">
@@ -20,7 +22,11 @@ export default async function BlogPage() {
                     {displayPosts.map(post => {
                         const { slug, date, title, description} = post
                         return <li key={slug}>
-                            <PostItem slug={slug} date={date} title={title} description={description}
+                            <PostItem 
+                                slug={slug} 
+                                date={date} 
+                                title={title} 
+                                description={description}
                             />
                         </li>
                     })}
