@@ -1,5 +1,13 @@
 import { siteConfig } from "@/config/site";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
+import { Description } from "@radix-ui/react-dialog";
+import { describe } from "node:test";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "About me",
+    description: "Info about me",
+};
 
 export default async function AboutPage() {
     return (
@@ -25,6 +33,15 @@ export default async function AboutPage() {
                     Electrical Engineer
                 </p>
             </div>
+            <p className="text-muted-foreground text-lg py-4">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. Duis aute irure dolor in
+                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                culpa qui officia deserunt mollit anim id est laborum
+            </p>
         </div>
     </div>
     );
