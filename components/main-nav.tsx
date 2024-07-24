@@ -20,7 +20,7 @@ export function MainNav() {
                 pathname === "/blog" ? "text-foreground" : "text-foreground/60"
             )}
         >
-            Blog
+            Projects
         </Link>
         <Link 
             href="/about" 

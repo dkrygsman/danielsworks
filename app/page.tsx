@@ -13,14 +13,14 @@ export default function Home() {
         Hello, I&apos;m Daniel
       </h1>
       <p className="max-w-[42rem] mx-auto text-muted-foreground sm:text-xl text-balance">
-        This is my project blog made with blah blah blah. AND blaj balh blah to make other lines of text
+        Daniel's Works is an online portfolio of all my technical projects. Made with React and Next.js. 
       </p>
       <div className="flex flex-col gap-4 justify-center sm:flex-row">
         <Link
           href="/blog"
           className={cn(buttonVariants({ size: "lg" }), "w-full sm:w-fit")}
         >
-          View my blog
+          View my Projects
         </Link>
         <Link href={siteConfig.links.github}
           target="_blank"
@@ -34,7 +34,7 @@ export default function Home() {
   </section>
   <section className="container max-w-4xl py-6 lg:py-10 flex flex-col space-y-6 mt-60">
     <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-center">
-      Latest Posts
+      Latest Projects
     </h2>
     <ul className="flex flex-col">
       {latestPosts.map(post => (
