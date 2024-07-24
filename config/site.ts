@@ -5,7 +5,7 @@ export const siteConfig ={
     author: "Daniel Krygsman",
     links: { 
         github: "https://github.com/dkrygsman",
-        linkedin: "https://www.linkedin.com/in/daniel-krygsman-25b665264/",
+        twitter: "https://www.linkedin.com/in/daniel-krygsman-25b665264/",
         youtube: "https://www.youtube.com/@danielkrygsman7736",
     },
 };

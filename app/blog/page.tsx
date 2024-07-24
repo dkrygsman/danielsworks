@@ -55,7 +55,10 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     })}
                 </ul>
             ) : (
-                <p>Nothing to see yet</p>
+                <p> 
+                    <br />
+                    Projects yet to be posted
+                </p>
             )}
             <QueryPagination totalPages = {totalPages} className="justify-end mt-4" />
         </div>
