@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Description } from "@radix-ui/react-dialog";
 import { describe } from "node:test";
 import { Metadata } from "next";
+import MyProfilePic from "@/components/MyProfilePic";
 
 export const metadata: Metadata = {
     title: "About me",
@@ -22,10 +23,7 @@ export default async function AboutPage() {
         <hr className="my-8" />
         <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
             <div className="min-w-48 max-w-48 flex flex-col gap-2">
-                <Avatar className="h-48 w-48">
-                    <AvatarImage src="/santa.png" alt={siteConfig.author} />
-                    <AvatarFallback> DK</AvatarFallback>
-                </Avatar>
+                <MyProfilePic />
                 <h2 className="text-2xl font-bold text-center break-words">
                     {siteConfig.author}
                 </h2>
@@ -34,13 +32,11 @@ export default async function AboutPage() {
                 </p>
             </div>
             <p className="text-muted-foreground text-lg py-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum
+                Hello, my name is Daniel Krygsman, I am a San Diego based Electrical Engineer. My technical passion lies with robotics, embedded systems, and feedback control. I hope to work with cutting edge software and hardware for real world solutions. 
+                <br />  <br /> 
+                I recieved my B.S. of Electrical Engineering from the Baskin School of Engineering at the University of California Santa Cruz in 2024. My course load granted me valuable hands-on experience with programmable microcontrollers, FPGAs, sensors, and high level robotic software archetecture i.e. ROS2. 
+                <br />  <br /> 
+                My technical skill set consists of programming languages (such as C/C++, Python, and Verilog), Simulation Software (such as Matlab, Simulink, and LTSpice), and CAD tools (such as Fusion 360, 3D Slicers, and Printers). I am adept at working on collaborative projects spanning 6+ months involving prototyping, testing, and presentation.
             </p>
         </div>
     </div>
