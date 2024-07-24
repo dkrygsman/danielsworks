@@ -50,6 +50,7 @@ export async function generateMetadata({
                 },
             ]
         },
+        //very confused on this
         linkedin: {
             card: "summary_large_image",
             title: post.title,
