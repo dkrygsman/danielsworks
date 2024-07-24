@@ -50,7 +50,7 @@ export async function generateMetadata({
                 },
             ]
         },
-        twitter: {
+        linkedin: {
             card: "summary_large_image",
             title: post.title,
             description: post.description,
