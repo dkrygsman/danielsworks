@@ -15,7 +15,7 @@ export default function Home() {
         Hello, I&apos;m Daniel
       </h1>
       <p className="max-w-[42rem] mx-auto text-muted-foreground sm:text-xl text-balance">
-        Daniel's Works is an online portfolio so  can share my technical projects.      
+        Daniel's Works is an online portfolio to share my technical projects.      
       </p>
       <div className="flex flex-col gap-4 justify-center sm:flex-row">
         <Link
