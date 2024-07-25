@@ -46,17 +46,17 @@ export async function generateMetadata({
                     url: `api/og?${ogSearchParams.toString()}`,
                     width: 1200,
                     height: 630,
-                    alt: post.title
+                    alt: post.title,
                 },
-            ]
+            ],
         },
         //very confused on this
-        linkedin: {
-            card: "summary_large_image",
-            title: post.title,
-            description: post.description,
-            images: [`/api/og${ogSearchParams.toString()}`],
-        }
+        // linkedin: {
+        //     card: "summary_large_image",
+        //     title: post.title,
+        //     description: post.description,
+        //     images: [`/api/og${ogSearchParams.toString()}`],
+        // }
     }
 }
 
