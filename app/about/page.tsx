@@ -32,11 +32,11 @@ export default async function AboutPage() {
                 </p>
             </div>
             <p className="text-muted-foreground text-lg py-4">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hello, my name is Daniel Krygsman, I am a San Diego based Electrical Engineer. My technical passion lies with robotics, embedded systems, and feedback control. I hope to work with cutting edge software and hardware for real world solutions. 
+                Hello, my name is Daniel Krygsman. I am a San Diego based Electrical Engineer. My technical passion lies with robotics, embedded systems, and feedback control. I hope to work with cutting edge software and hardware for real world solutions. 
                 <br />  <br /> 
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I recieved my B.S. of Electrical Engineering from the Baskin School of Engineering at the University of California Santa Cruz in 2024. My course load granted me valuable hands-on experience with Programmable Microcontrollers, FPGAs, Sensors, and High Level Robotic Software Archetectures i.e. ROS2. 
+                I recieved my B.S. of Electrical Engineering from the Baskin School of Engineering at the University of California Santa Cruz in 2024. My course load granted me valuable hands-on experience with Programmable Microcontrollers, FPGAs, Sensors, and High Level Robotic Software Archetectures i.e. ROS2. 
                 <br />  <br /> 
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My technical skill set consists of programming languages (such as C/C++, Python, and Verilog), Simulation Software (such as Matlab, Simulink, and LTSpice), and CAD tools (such as Fusion 360, 3D Slicers, and Printers). I am adept at working on collaborative projects spanning 6+ months involving prototyping, testing, and presentation.
+                My technical skill set consists of programming languages (such as C/C++, Python, and Verilog), Simulation Software (such as Matlab, Simulink, and LTSpice), and CAD tools (such as Fusion 360, 3D Slicers, and Printers). I am adept at working on collaborative projects spanning 6+ months involving prototyping, testing, and presentation.
             </p>
         </div>
     </div>
