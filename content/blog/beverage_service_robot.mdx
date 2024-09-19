@@ -17,6 +17,8 @@ published: true
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The ROS archetecture uses a URDF or robot description file to tie all sensing and moving parts of the robot together and all bodies of the robot for mapping. This intensive process consisted of matching precise measurements to create a body that matches our bot. ROS allows for importing STL files to give a exact shape which is something that can be utilized in the future or on other robotic projects. The moving bodies such as drive wheels and caster wheel are specified as non-fixed bodies and all bodies of the bot also have their respective moments of interia, resistance, weight which add to map to real world accuracy when testing. Bodies are also made for the sensors with respective "frames" which give the system information on where the origin of sensor data lies. Below are images for URDF file visualized and actual bot. 
 
+<MyProfilePic />
+
 ### ROS2 Control
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By far the largest part of my role of the project was interfacing the motors with the system. The ROS standard for interfacing motors is setting up a ROS Control node which sets all system read and write as state and command interfaces instead of using topics and actions. This is to done to decrease latency. Another aspect of the motor control was to use a seperate microcontroller to conduct all low level computation while the Pi only controls the command to each wheel and the position and velocity of each wheel. This follows the trend of adding levels of abstraction to the system. The offboard microcontroller used is an Arduino Nano running a differential drive controller code provided by a bay area robotics club, Homebrew Robotics Club.\
