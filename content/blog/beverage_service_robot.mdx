@@ -19,6 +19,9 @@ published: true
 
 ![real bot image](real_bot.jpg)
 
+![urdf bot image](urdf_bot.png)
+
+
 ### ROS2 Control
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By far the largest part of my role of the project was interfacing the motors with the system. The ROS standard for interfacing motors is setting up a ROS Control node which sets all system read and write as state and command interfaces instead of using topics and actions. This is to done to decrease latency. Another aspect of the motor control was to use a seperate microcontroller to conduct all low level computation while the Pi only controls the command to each wheel and the position and velocity of each wheel. This follows the trend of adding levels of abstraction to the system. The offboard microcontroller used is an Arduino Nano running a differential drive controller code provided by a bay area robotics club, Homebrew Robotics Club.\
