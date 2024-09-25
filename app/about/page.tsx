@@ -36,7 +36,7 @@ export default async function AboutPage() {
                 <br />  <br /> 
                 I recieved my B.S. of Electrical Engineering from the Baskin School of Engineering at the University of California Santa Cruz in 2024. My course load granted me valuable hands-on experience with Programmable Microcontrollers, FPGAs, Sensors, and High Level Robotic Software Archetectures i.e. ROS2. 
                 <br />  <br /> 
-                My technical skill set consists of programming languages (such as C/C++, Python, and Verilog), Simulation Software (such as Matlab, Simulink, and LTSpice), and CAD tools (such as Fusion 360, 3D Slicers, and Printers). I am adept at working on collaborative projects spanning 6+ months involving prototyping, testing, and presentation.
+                My technical skill set consists of programming languages (such as C/C++, Python, and Verilog), Simulation Software (such as Matlab, Simulink, V_REP, and LTSpice), and CAD tools (such as Fusion 360, 3D Slicers, and Printers). I am adept at working on collaborative projects spanning 6+ months involving prototyping, testing, and presentation.
             </p>
         </div>
     </div>
