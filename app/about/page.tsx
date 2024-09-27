@@ -45,14 +45,11 @@ export default async function AboutPage() {
             My technical skill set consists of programming languages (such as C/C++, Python, and Verilog), Simulation Software (such as Matlab, Simulink, V_REP, and LTSpice), and CAD tools (such as Fusion 360, 3D Slicers, and Printers). I am adept at working on collaborative projects spanning 6+ months involving prototyping, testing, and presentation.
 
             </p>
-
-            <p>
-                <MyResumePic />
-            </p>
            
 
         </div>
-        
+
+       <MyResumePic /> 
 
     </div>
     );
