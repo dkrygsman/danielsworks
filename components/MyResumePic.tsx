@@ -6,8 +6,8 @@ export default function MyResumePic() {
             <Image 
                 className=" drop-shadow-xl shadow-black mx-auto mt-8"
                 src="/images/resume_9_26_2024_JPEG.jpg"
-                width={900}
-                height={900}
+                width={600}
+                height={600}
                 alt="resumepic"
                 priority={true}
             />
