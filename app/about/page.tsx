@@ -5,6 +5,37 @@ import { describe } from "node:test";
 import { Metadata } from "next";
 import MyProfilePic from "@/components/MyProfilePic";
 
+import React from 'react';
+import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import ReactPDF from '@react-pdf/renderer';
+
+const styles = StyleSheet.create({
+    page: {
+      flexDirection: 'row',
+      backgroundColor: '#E4E4E4'
+    },
+    section: {
+      margin: 10,
+      padding: 10,
+      flexGrow: 1
+    }
+  });
+
+  const MyDocument = () => (
+    <Document>
+      <Page size="A4" style={styles.page}>
+        <View style={styles.section}>
+          <Text>Section #1</Text>
+        </View>
+        <View style={styles.section}>
+          <Text>Section #2</Text>
+        </View>
+      </Page>
+    </Document>
+  );
+
+
+
 export const metadata: Metadata = {
     title: "About me",
     description: "Info about me",
@@ -37,12 +68,13 @@ export default async function AboutPage() {
                 I recieved my B.S. of Electrical Engineering from the Baskin School of Engineering at the University of California Santa Cruz in 2024. My course load has granted me valuable hands-on experience with Programmable Microcontrollers, FPGAs, Sensors, and High Level Robotic Software Archetectures i.e. ROS2. 
                 <br />  <br /> 
                 My technical skill set consists of programming languages (such as C/C++, Python, and Verilog), Simulation Software (such as Matlab, Simulink, V_REP, and LTSpice), and CAD tools (such as Fusion 360, 3D Slicers, and Printers). I am adept at working on collaborative projects spanning 6+ months involving prototyping, testing, and presentation.
-                <br />  <br /> 
-
-                <p>More Information: <a target="_blank" href="resume_9_26_2024.pdf">Example Report </a></p>
 
             </p>
+
+            ReactPDF.render(<MyDocument />, `resume_9_26_2024.pdf`);
+
         </div>
     </div>
     );
 }
+
