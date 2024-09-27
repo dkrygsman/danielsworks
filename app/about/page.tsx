@@ -38,16 +38,22 @@ export default async function AboutPage() {
                     Electrical Engineer
                 </p>
             </div>
-            <p className="text-muted-foreground text-lg py-4">
-            Hello, my name is Daniel Krygsman. I am a San Diego-based Electrical Engineer. My technical passion lies in robotics, embedded systems, and feedback control. I hope to work with cutting-edge software and hardware for real-world solutions. <br /><br /> 
-            I received my B.S. in Electrical Engineering from the Baskin School of Engineering at the University of California Santa Cruz in 2024. My course load has granted me valuable hands-on experience with Programmable Microcontrollers, FPGAs, Sensors, and High-Level Robotic Software Architectures i.e. ROS2.<br /><br /> 
-            My technical skill set consists of programming languages (such as C/C++, Python, and Verilog), Simulation Software (such as Matlab, Simulink, V_REP, and LTSpice), and CAD tools (such as Fusion 360, 3D Slicers, and Printers). I am adept at working on collaborative projects spanning 6+ months involving prototyping, testing, and presentation.
+            <div className="flex flex-row">
+                <p className="text-muted-foreground text-lg py-4">
+                Hello, my name is Daniel Krygsman. I am a San Diego-based Electrical Engineer. My technical passion lies in robotics, embedded systems, and feedback control. I hope to work with cutting-edge software and hardware for real-world solutions. <br /><br /> 
+                I received my B.S. in Electrical Engineering from the Baskin School of Engineering at the University of California Santa Cruz in 2024. My course load has granted me valuable hands-on experience with Programmable Microcontrollers, FPGAs, Sensors, and High-Level Robotic Software Architectures i.e. ROS2.<br /><br /> 
+                My technical skill set consists of programming languages (such as C/C++, Python, and Verilog), Simulation Software (such as Matlab, Simulink, V_REP, and LTSpice), and CAD tools (such as Fusion 360, 3D Slicers, and Printers). I am adept at working on collaborative projects spanning 6+ months involving prototyping, testing, and presentation.
 
-            </p>
+                </p>
 
-            <MyResumePic />
+                <MyResumePic />
+
+            </div>
+           
 
         </div>
+        
+
     </div>
     );
 
