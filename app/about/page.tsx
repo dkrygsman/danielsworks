@@ -6,6 +6,9 @@ import { Metadata } from "next";
 import MyProfilePic from "@/components/MyProfilePic";
 import React from "react";
 
+import MyResumePic from "@/components/MyResumePic";
+
+
 
 
 
@@ -42,7 +45,7 @@ export default async function AboutPage() {
 
             </p>
 
-            
+            <MyResumePic />
 
         </div>
     </div>
