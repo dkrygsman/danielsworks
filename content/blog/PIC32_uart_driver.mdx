@@ -4,5 +4,22 @@ description: ECE 121 Project
 date: 2023-04-14
 published: true
 ---
- 
-Description coming soon!
+
+### Introduction 
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For UC Santa Cruz's electrical engineering program, a concentration of communication signals and systems, or electronics and optics must be chosen and a respective design elective based of the concentration. I chose electronics and optics with the design elective ECE 121, Microcontroller System Design. The final project for this course was to create a uart driver for the PIC32 microcontroller. This involved understanding the hardware architecture of the PIC32 and understanding how to interpret the family reference manual to design a uart driver that interfaces properly to the hardware. 
+
+
+### Block Diagram 
+
+<p align="center">
+    ![uart block diagram](uart_block.png)
+    uart driver block diagram
+</p>
+
+
+
+
+
+
+an interrupt service routine function that using the hardware rx and tx registers and populates two instances of circular buffers, one for rx and one for tx (recieve and transmit). A package parcer state machine is created in code that cycle through the incomming charators and parcing and checking the data to respective variables, i.e. length, ID, payload, checksum, etc. 
