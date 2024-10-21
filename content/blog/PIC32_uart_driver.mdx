@@ -19,6 +19,51 @@ published: true
     uart driver block diagram
 </p>
 
+
+```js {4} showLineNumbers
+void __ISR(_UART_1_VECTOR)IntUart1Handler(void)
+{
+    int checker = 0;
+    if(IFS0bits.U1RXIF)                                     //RX block
+    {
+        IFS0bits.U1RXIF = 0;                //URXDA is rx buffer sweet stop
+        while(U1STAbits.URXDA && !is_buff_full(&rx_buffer))     //has room and data and buffer has room
+        {
+            add_to_buff(&rx_buffer, U1RXREG);               //add rxREG contents to rx_buff
+            //LATE = 0b00000001;
+        }
+       
+    }
+    if(IFS0bits.U1TXIF)                         //TX block
+    {
+        IFS0bits.U1TXIF = 0;
+        if(tx_busy)                             //if busy do nothing
+        {
+            //tx_collision = 1;
+            //LATE = 0b00000010;
+            //tx_busy = 0;
+        }
+        else                                                            
+        {
+            while (!is_buff_empty(&tx_buffer) && !U1STAbits.UTXBF)      //if not busy check if tx_buff has data and TX is not full
+            {                   //UTXBF is 1 when TX is full
+            
+                unsigned char val;
+                val = take_from_buff(&tx_buffer);           //print next char from tx_buffer
+                U1TXREG = val;
+                //LATE = 0b00000100;
+                //tx_busy = 0;
+            } 
+            
+          
+        }
+    
+    }
+    //tx_busy = 0;
+    IFS0bits.U1TXIF = 0;                            //lower flag for special cases such as first flag raise
+}
+```
+
 ### Physical layer 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the
