@@ -19,8 +19,35 @@ published: true
     uart driver block diagram
 </p>
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The heart of the application layer is the UartInit funtion and the interupt service routine (ISR) function which trigger the ISR depending on the status of the hardware registers. The code for the Init function and ISR are featured below, while the rest of the code is included in the github repo 
+<p>
+    [Here](https://github.com/dkrygsman/PIC32-uart-driver 'github repo')
+</p>
 
 ```js {4} showLineNumbers
+void Uart_Init(void){
+    IEC0bits.U1RXIE = 0;
+    IEC0bits.U1TXIE = 0;    
+    U1MODE = 0;                     //clears control registers
+    U1BRG = 21;                     //sets baud rate to generate 115200
+    U1MODEbits.PDSEL = 00;          //sets no parity       
+    U1MODEbits.STSEL = 0;           //sets 1 bit stop             //uart enable
+            //receiver enable
+    IPC6bits.U1IP = 6;
+    IPC6bits.U1IS = 0;
+    U1STAbits.URXISEL = 0;              //rx flag raised when character is received
+    U1STAbits.UTXISEL = 0;              //tx flag raised when tx contains space
+    IFS0bits.U1TXIF = 0;
+    IFS0bits.U1RXIF = 0;
+    U1MODEbits.ON = 1; 
+    IEC0bits.U1RXIE = 1;
+    IEC0bits.U1TXIE = 1; 
+    U1STAbits.UTXEN = 1;            //transmitter enable
+    U1STAbits.URXEN = 1;
+    return;
+}
+
+
 void __ISR(_UART_1_VECTOR)IntUart1Handler(void)
 {
     int checker = 0;
@@ -32,7 +59,6 @@ void __ISR(_UART_1_VECTOR)IntUart1Handler(void)
             add_to_buff(&rx_buffer, U1RXREG);               //add rxREG contents to rx_buff
             //LATE = 0b00000001;
         }
-       
     }
     if(IFS0bits.U1TXIF)                         //TX block
     {
@@ -54,10 +80,7 @@ void __ISR(_UART_1_VECTOR)IntUart1Handler(void)
                 //LATE = 0b00000100;
                 //tx_busy = 0;
             } 
-            
-          
         }
-    
     }
     //tx_busy = 0;
     IFS0bits.U1TXIF = 0;                            //lower flag for special cases such as first flag raise
