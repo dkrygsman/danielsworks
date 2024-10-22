@@ -7,7 +7,7 @@ published: true
 
 ### Introduction 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For UC Santa Cruz's Electrical Engineering program, a concentration of communication signals and systems, or electronics and optics must be chosen and a respective design elective based of the concentration. I chose electronics and optics with the design elective ECE 121, Microcontroller System Design. The final project for this course was to create a UART driver and protocol parser for the PIC32 microcontroller. This involved understanding the hardware architecture of the PIC32 and how to interpret the family reference manual to design a UART driver that interfaces properly to the hardware, and parses the data into packages based on its message ID. This is done on the ChipKit uno32 development board by Diligent, coded and debugged using MPLab X IDE. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For UC Santa Cruz's Electrical Engineering program, a concentration of Communication Signals and Systems, or Electronics and Optics must be chosen and a respective design elective based of the concentration. I chose electronics and optics with the design elective ECE 121, Microcontroller System Design. The final project for this course was to create a UART driver and protocol parser for the PIC32 microcontroller. This involved understanding the hardware architecture of the PIC32 and how to interpret the family reference manual to design a UART driver that interfaces properly to the hardware, and parses the data into packages based on its message ID. This is done on the ChipKit uno32 development board by Diligent, coded and debugged using MPLab X IDE. 
 
 
 ### Block Diagram 
@@ -55,7 +55,7 @@ typedef struct{
 ```js showLineNumbers
 void Uart_Init(void){
     IEC0bits.U1RXIE = 0;
-    IEC0bits.U1TXIE = 0;    
+    IEC0bits.U1TXIE = 0;    
     U1MODE = 0;                     //clears control registers
     U1BRG = 21;                     //sets baud rate to generate 115200
     U1MODEbits.PDSEL = 00;          //sets no parity       
