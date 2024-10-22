@@ -12,7 +12,7 @@ published: true
 
 ### Block Diagram 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The project can be broken up into two distinct layers, the physical layer, and the application layer. Diagram is featured below, and detailed descritions for each layer follows. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The project can be broken up into two distinct layers, the physical layer, and the application layer. Diagram is featured below, and detailed descritions for each layer follows. The two layers can be easily thought of as the physical layer being interuptting code based off the tx and rx registers, and the normal running code which is the application layer. 
 
 <p align="center">
     ![uart block diagram](uart_block.png)
@@ -21,12 +21,9 @@ published: true
 
 ### Physical Layer 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The physical layer consists of the uart bridge chip and is uart rx and tx registers (hardware components), two instances of a circular buffer struct (rx and tx), and the Getchar and Putchar functions for adding or taking from the rx/tx buffers. As for the application layer, this consists of a serial protocol parser function that verifies and creates packages from the incomming characters (head, length, payload, tail, checksum, end). This is then passed to the application which based on various ID's remakes the package and sendings it back to the physical layer to be transmitted back out of the Uno32 development board. Without the special ID"s spesified by the assignment the uart driver application layer just sends the packet as is back to the transmit side, if the package starts with the Debug ID, then it returns the date and time. If the package starts with the Ping ID then the ID is changed to Pong and the rest of the message (payload) is converted from big endian to little endian and returned. The last two ID cases are the Set and Get ID's which based off the rest of the message (payload) sets or gets the status of lit LEDS on the board. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The physical layer consists of the uart bridge chip and is uart rx and tx registers (hardware components), two instances of a circular buffer struct (rx and tx), and the Getchar and Putchar functions for adding or taking from the rx/tx buffers. This is necessary because of the limitations of the hardware register sizes. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The heart of the application layer is the UartInit funtion and the interupt service routine (ISR) function which trigger the ISR depending on the status of the hardware registers. The code for the Init function and ISR are featured below, while the rest of the code is included in the github repo. 
-<p align="center">
-    [Github Repo](https://github.com/dkrygsman/PIC32-uart-driver 'github repo')
-</p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The heart of the application layer is the UartInit funtion and the interupt service routine (ISR) function which trigger the ISR depending on the status of the hardware registers. The code for the Init function and ISR are featured below, while the rest of the code is included in the github repo attached at the end of this page. 
 
 
 ```js {2} showLineNumbers
@@ -91,13 +88,14 @@ void __ISR(_UART_1_VECTOR)IntUart1Handler(void)
 }
 ```
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The other functions of the Physical layer not featured above, but can be found in the Github repo include UartInit, Getchar, Putchar, and the none-package buffer functions.  
-
 ### Application layer 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The test
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As for the application layer, this consists of a serial protocol that verifies and creates packages via a state machine from the incomming characters (head, length, payload, tail, checksum, end). The state machine also parses the packages based on various ID's remakes the package and sendings it back to the physical layer to be transmitted back out of the Uno32 development board. The TD's of each packet determines how they are parsed, the debug ID returns the date and time. The Ping ID returns the Pong ID and the rest of the message (payload) is converted from big endian to little endian and returned. The last two ID cases are the Set and Get ID's which based off the rest of the message (payload) sets or gets the status of lit LEDS on the board. Packages without these ID's just return the none affected payload. Together both layers of the program work to correctly satisfy the project requirements. 
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A more descriptive report is included in the Github repo along with all code.
 
-
+<p align="center">
+    [Github Repo](https://github.com/dkrygsman/PIC32-uart-driver 'github repo')
+</p>
 
 
