@@ -23,7 +23,7 @@ published: true
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The physical layer consists of the uart bridge chip and is uart rx and tx registers (hardware components), the interrupt service routine functions, two instances of a circular buffer struct for rx and tx, and the Getchar and Putchar functions for adding or taking from the rx/tx buffers. This is necessary because of the limitations of the hardware register sizes. 
 
-```js {4} showLineNumbers
+```js showLineNumbers
 typedef struct rxpT {
     uint8_t ID;      
     uint8_t len;
@@ -52,7 +52,7 @@ typedef struct{
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The heart of the physical layer is the UartInit funtion and the interupt service routine (ISR) function which trigger the ISR depending on the status of the hardware registers. The code for the Init function and ISR are featured below. 
 
 
-```js {4} showLineNumbers
+```js showLineNumbers
 void Uart_Init(void){
     IEC0bits.U1RXIE = 0;
     IEC0bits.U1TXIE = 0;    
