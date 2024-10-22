@@ -23,10 +23,36 @@ published: true
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The physical layer consists of the uart bridge chip and is uart rx and tx registers (hardware components), the interrupt service routine functions, two instances of a circular buffer struct for rx and tx, and the Getchar and Putchar functions for adding or taking from the rx/tx buffers. This is necessary because of the limitations of the hardware register sizes. 
 
+```js {4} showLineNumbers
+typedef struct rxpT {
+    uint8_t ID;      
+    uint8_t len;
+    uint8_t checkSum; 
+    unsigned char payLoad[MAXPAYLOADLENGTH];
+ }rxpADT; 
+ 
+typedef struct{
+    int head;
+    int tail;
+    rxpADT data[PACKETBUFFERSIZE];
+    int full_flag;
+}packet_buffer;
+
+typedef struct{
+    int head;
+    int tail;
+    unsigned char data[BUFFER_SIZE];
+    int full_flag;
+}circular_buffer;
+```
+<p align="center">
+    Character and Packet Buffer Structs
+</p>
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The heart of the physical layer is the UartInit funtion and the interupt service routine (ISR) function which trigger the ISR depending on the status of the hardware registers. The code for the Init function and ISR are featured below. 
 
 
-```js {2} showLineNumbers
+```js {4} showLineNumbers
 void Uart_Init(void){
     IEC0bits.U1RXIE = 0;
     IEC0bits.U1TXIE = 0;    
@@ -48,7 +74,6 @@ void Uart_Init(void){
     U1STAbits.URXEN = 1;
     return;
 }
-
 
 void __ISR(_UART_1_VECTOR)IntUart1Handler(void)
 {
@@ -87,6 +112,10 @@ void __ISR(_UART_1_VECTOR)IntUart1Handler(void)
     IFS0bits.U1TXIF = 0;                            //lower flag for special cases such as first flag raise
 }
 ```
+<p align="center">
+    UartInit and Iterrupt Service Routine
+</p>
+
 
 ### Application layer 
 
