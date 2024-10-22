@@ -7,12 +7,12 @@ published: true
 
 ### Introduction 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For UC Santa Cruz's Electrical Engineering program, a concentration of communication signals and systems, or electronics and optics must be chosen and a respective design elective based of the concentration. I chose electronics and optics with the design elective ECE 121, Microcontroller System Design. The final project for this course was to create a uart driver for the PIC32 microcontroller. This involved understanding the hardware architecture of the PIC32 and understanding how to interpret the family reference manual to design a uart driver that interfaces properly to the hardware, parses the data into packages, and returns the package based on its message ID. This is done on the ChipKit uno32 development board by diligent, coded and debugged using MPLab X IDE. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For UC Santa Cruz's Electrical Engineering program, a concentration of communication signals and systems, or electronics and optics must be chosen and a respective design elective based of the concentration. I chose electronics and optics with the design elective ECE 121, Microcontroller System Design. The final project for this course was to create a uart driver and protocol parser for the PIC32 microcontroller. This involved understanding the hardware architecture of the PIC32 and understanding how to interpret the family reference manual to design a uart driver that interfaces properly to the hardware, and parses the data into packages based on its message ID. This is done on the ChipKit uno32 development board by Diligent, coded and debugged using MPLab X IDE. 
 
 
 ### Block Diagram 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The project can be broken up into two distinct layers, the physical layer, and the application layer. Diagram is featured below, and detailed descritions for each layer follows. The two layers can be easily thought of as the physical layer being interuptting code based off the tx and rx registers, and the normal running code which is the application layer. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The project can be broken up into two distinct layers, the physical layer, and the application layer. Diagram is featured below, and detailed descritions for each layer follows. The two layers can be esily thought of as the physical layer being interuptting code based off the tx and rx registers, and the normal running code which is the application layer. 
 
 <p align="center">
     ![uart block diagram](uart_block.png)
@@ -21,9 +21,9 @@ published: true
 
 ### Physical Layer 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The physical layer consists of the uart bridge chip and is uart rx and tx registers (hardware components), two instances of a circular buffer struct (rx and tx), and the Getchar and Putchar functions for adding or taking from the rx/tx buffers. This is necessary because of the limitations of the hardware register sizes. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The physical layer consists of the uart bridge chip and is uart rx and tx registers (hardware components), the interrupt service routine functions, two instances of a circular buffer struct for rx and tx, and the Getchar and Putchar functions for adding or taking from the rx/tx buffers. This is necessary because of the limitations of the hardware register sizes. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The heart of the application layer is the UartInit funtion and the interupt service routine (ISR) function which trigger the ISR depending on the status of the hardware registers. The code for the Init function and ISR are featured below, while the rest of the code is included in the github repo attached at the end of this page. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The heart of the physical layer is the UartInit funtion and the interupt service routine (ISR) function which trigger the ISR depending on the status of the hardware registers. The code for the Init function and ISR are featured below. 
 
 
 ```js {2} showLineNumbers
@@ -92,7 +92,7 @@ void __ISR(_UART_1_VECTOR)IntUart1Handler(void)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As for the application layer, this consists of a serial protocol that verifies and creates packages via a state machine from the incomming characters (head, length, payload, tail, checksum, end). The state machine also parses the packages based on various ID's remakes the package and sendings it back to the physical layer to be transmitted back out of the Uno32 development board. The TD's of each packet determines how they are parsed, the debug ID returns the date and time. The Ping ID returns the Pong ID and the rest of the message (payload) is converted from big endian to little endian and returned. The last two ID cases are the Set and Get ID's which based off the rest of the message (payload) sets or gets the status of lit LEDS on the board. Packages without these ID's just return the none affected payload. Together both layers of the program work to correctly satisfy the project requirements. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A more descriptive report is included in the Github repo along with all code.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Github repo includes a more descriptive report of the project, and all code including all uart functionns, all register character and packet buffer functions, and the programs main function. 
 
 <p align="center">
     [Github Repo](https://github.com/dkrygsman/PIC32-uart-driver 'github repo')
