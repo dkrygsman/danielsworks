@@ -121,7 +121,7 @@ void __ISR(_UART_1_VECTOR)IntUart1Handler(void)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As for the application layer, this consists of a serial protocol that verifies and creates packages via a state machine from the incoming characters (head, length, payload, tail, checksum, end). The state machine also parses the packages based on various IDs remakes the package and sends it back to the physical layer to be transmitted back out of the Uno32 development board. The IDs of each packet determine how they are parsed, the debug ID returns the date and time. The Ping ID returns the Pong ID and the rest of the message (payload) is converted from big endian to little endian and returned. The last two ID cases are the Set and Get IDs which based on the rest of the message (payload) sets or gets the status of lit LEDS on the board. For packages without these IDs, the none-affected payload is returned. Together both layers of the program work to correctly satisfy the project requirements. 
 
-###Conclusion
+### Conclusion
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This project was my first true embedded project and provided valuable insights into the limitations of hardware and software solutions. The hardware registers provided are only 9 bits wide (if remembered correctly) and without the use of interrupting code to enqueue and dequeue this data to larger software buffers, data would be overwritten and lost. The software techniques used such as interrupts and linked lists provide a real-world solution to these limitations. The GitHub repo includes a more descriptive report of the project and all C source files.
 
