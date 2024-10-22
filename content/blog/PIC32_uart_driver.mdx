@@ -123,7 +123,7 @@ void __ISR(_UART_1_VECTOR)IntUart1Handler(void)
 
 ### Conclusion
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This project was my first true embedded project and provided valuable insights into the limitations of hardware and software solutions. The hardware registers provided are only 9 bits wide (if remembered correctly) and without the use of interrupting code to enqueue and dequeue this data to larger software buffers, data would be overwritten and lost. The software techniques used such as interrupts and linked lists provide a real-world solution to these limitations. The GitHub repo includes a more descriptive report of the project and all C source files.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This project was my first true embedded project and provided valuable insights into the limitations of hardware, and its respective software solutions. The hardware registers provided on the PIC32 are only 9 bits wide (if remembered correctly), and without the use of interrupting code to enqueue and dequeue this data to larger software buffers, data would be overwritten and lost. The software techniques used such as interrupts and linked lists provide a real-world solution to these limitations. The GitHub repo includes a more descriptive report of the project and all C source files.
 
 <p align="center">
     [Github Repo](https://github.com/dkrygsman/PIC32-uart-driver 'github repo')
