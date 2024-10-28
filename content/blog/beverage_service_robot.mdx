@@ -19,7 +19,7 @@ published: false
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The ROS architecture uses a URDF or robot description file to tie all sensing and moving parts of the robot together and all bodies of the robot for mapping. This intensive process consisted of matching precise measurements to create a body that matches our bot. ROS allows for importing STL files to give an exact shape which is something that can be utilized in the future or on other robotic projects. The moving bodies such as drive wheels and caster wheels are specified as non-fixed bodies and all bodies of the bot also have their respective moments of inertia, resistance, and weight which add to map to real-world accuracy when testing. Bodies are also made for the sensors with respective "frames" which give the system information on where the origin of sensor data lies. Below are images for the URDF file visualized and the actual bot. 
 
 <p align="center">
-    ![urdf bot image](pictures/bot_pics.png)
+    ![urdf bot image](bot_pics.png)
  Bot and corresponding URDF file model
 </p>
 
@@ -31,7 +31,7 @@ published: false
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The ROS control node is built off the supplied demos from the ROS Control documentation, but changed to work with the specific motor controller microcontrollers code. This entails when and what data must be passed via the serial connection. Our bot uses two PID-controlled motors along with GoBilda Yellow Jacket Planetary motors with encoders because of the speed, torque, and price specs. The heart of the ROS Control node is a C++ program, which runs through states setting up its read and write functions to the motor controller. With all of this working our bot can accurately and quickly control the fairly high torque motors needed for this project. Setting up the ROS Control node became the largest part of the software role because even with good documentation, the specific nature of ROS, and much more specific ROS Control, debugging seemed like a Stack Overflow treasure hunt.     
 
 <p align="center">
-    ![motor testing](pictures/motors.png)
+    ![motor testing](motors.png)
  ROS2 Control motor testing 
 </p>
 
@@ -41,19 +41,19 @@ published: false
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Unlike the ROS Control node, the sensors were much easier than expected. Both the RPLidar and distance camera are supported to be used with ROS, each comes with necessary dependencies and packages, and documentation to run provided launch files depending on the application. Both sensors were easy to configure and did not prove to be an issue when integrating with the rest of the system during SLAM. The 2d Lidar proved to be my favorite sensor due to its accuracy and ease of use with navigation, and I look forward to potentially working with a 3d lidar unit in the future. 
 
 <p align="center">
-    ![lidar image](pictures/lidar.png)
+    ![lidar image](lidar.png)
  Simulated lidar with visualized output 
 </p>
 
 
 <p align="center">
-    ![lidar sensor](pictures/lidar_sensor.png)
+    ![lidar sensor](lidar_sensor.png)
  Actual 2D lidar sensor 
 </p>
 
 
 <p align="center">
-    ![camera viz](pictures/camera.png)
+    ![camera viz](camera.png)
  OAK-D Lite depth camera output
 </p>
 
