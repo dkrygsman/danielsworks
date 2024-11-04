@@ -1,22 +1,26 @@
 ---
-title: Linear Actuator 
-description: 3D Printed Linear Actuator Project
+title: Autotiller 
+description: PID Controlled Autotiller Project 
 date: 2024-03-04
 published: true
 ---
 
 ### Introduction 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This project is a 3d modeled linear actuator which uses a ten turn pot as a position encoder. This is a smaller part of a larger project, which is a sailboat autotiller. The sailboat autotiller stears a sailboat by pushing or pulling a tiller connected to a rudder. The amount that is pushed or pulled is controlled by a PID controller off of the sailboats attitude, which is sensed via the BNO055 IMU sensor from Bosch. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This project is a PID controlled autotiller which depending on a sailboats yaw attitude or horizontal heading, pushes or pulls the boats tiller (which controls stearing) to correct its course. The project consists of a 3d modeled linear actuator which uses a ten turn pot as a position encoder, controlled by a one axis PID controller running on a STM32 Nucleo microcontroller programmed on STM32 Cube IDE. I am using the BNO055 IMU breakout board fron adafruit and an open source library from Daniel Mironow. 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Progress for this project slowed because of delays in getting the BNO055 properly working one the new microcontroller I've been using (STM32 Nucleo dev board), and because faulty milti-turn potentiometers (which I heard is common with cheap ones). That being said this project is continuing because of the now working STM32-BNO055 combination! BNO055 and STM32 repo can be found
+### Linear Actuator 
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linear actuator was designed based off slide potentiometer linear actuator where the position is encoded with a slide pot, but with a ten turn potentiometer for encoding which can be belt driven. The body and some of the gears were modeled on fusion 360 and 3d printed on an Ender V3 and Bambu Labs A1 3d printers. The threaded rod (like one used for 3d printers) is installed through two bearings for decreased friction. The motor is also held by a 3d modeled and printed base and drives the threaded rod via 3d printer timing belts. The model took multiple iterations to get to where it is now, with changes improving it's action. 
+
+### Code
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linear actuators code was developed on the STM32 Nucleo f411re development board and the STM32 Cube IDE. There are two source files in the Github repo right now, push_pull which just consists of functions needed to controlled the pushing and pulling of the arm. The main function linear_set() is a three state state machine which its states are chill, push, and pull. This function outputs to two GPIO pins which connect to the H-bridge. The function also reads a target value, and pot value (from the ten turn pot for feedback).  
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second project in the repo is line_act, which consists of the single axis (Yaw) PID controller. The project is configured to have 3 analog inputs for potentiometers to set the k_p, k_i, and k_d constants, two I2C connections, one for the BNO055 IMU and one for an OLED screen displaying the constants, and a timer to output a PWM signal to a servo. The servo is temporary, and will be changed to work with the push pull project once the physical linear actuators enclosure is made. 
+ 
 <p align="center">
-    [Here](https://github.com/dkrygsman/drone_imu 'Here')
-</p>
-
-<p align="center">
-    [GitHub repo with stl files and parts](https://github.com/dkrygsman/linear_actuator 'Here')
+    [Github Repo](https://github.com/dkrygsman/autotiller/tree/main 'Here')
 </p>
 
 
