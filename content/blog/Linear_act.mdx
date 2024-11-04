@@ -28,6 +28,8 @@ published: true
  Linear Actuator set up with parts and belts
 </p>
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pictures and demo video to come once enclosure is made and PID controller code and push pull h-bridge functions are combined.
+
 ### Code
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linear actuators code was developed on the STM32 Nucleo f411re development board and the STM32 Cube IDE. There are two source files in the Github repo right now, push_pull which just consists of functions needed to controlled the pushing and pulling of the arm. The main function linear_set() is a three state state machine which its states are chill, push, and pull. This function outputs to two GPIO pins which connect to the H-bridge. The function also reads a target value, and pot value (from the ten turn pot for feedback).  
