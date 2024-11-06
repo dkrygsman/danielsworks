@@ -34,7 +34,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
                 <div className="flex-1 space-y-4">
                     <h1 className="inline-block font-black text-4xl  lg:text-5xl">Projects</h1>
-                    <h2 className="inline-block font-normal text-sm  lg:text-lg">Robotics: Beverage Service Robot<br />
+                    <h2 className="inline-block font-black text-sm  lg:text-lg">Robotics: Beverage Service Robot<br />
                 Embedded C: PIC32 Uart Driver and Protocol<br />
                 FPGA: Slug Invaders Verilog Game<br />
                 CAD: Autotiller</h2>
