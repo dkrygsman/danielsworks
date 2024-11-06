@@ -37,13 +37,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 {/* <p className="text-xl text-muted-foreground">
                 </p> */}
                 </div>
-                <div>
+            </div>
+            <div>
                 <h1 className="inline-block font-black text-lg  lg:text-2xl">Robotics: Beverage Service Robot<br />
                 Embedded C: PIC32 Uart Driver and Protocol<br />
                 FPGA: Slug Invaders Verilog Game<br />
                 CAD: Autotiller</h1>
                 </div>
-            </div>
             <hr className="mt-8" />
             {displayPosts?.length > 0 ? (
                 <ul className="flex flex-col">
