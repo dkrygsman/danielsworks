@@ -40,7 +40,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             </div>
             <div className="flex flex-col items-start gap-4 md:flex-row md:justify-between md:gap-8">
                 <div className="flex-1 space-y-4">
-                    <h1 className="inline-block font-normal text-sm  lg:text-sm">Top Projects <br />
+                    <h1 className="inline-block font-normal text-sm  lg:text-sm"> <br />
+                    Top Projects <br />
                     Robotics: Beverage Service Robot <br />
                     Embedded C: PIC32 Uart Driver and Protocol <br />
                     FPGA: Slug Invaders Game <br />
