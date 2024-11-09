@@ -45,7 +45,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     Robotics: Beverage Service Robot <br />
                     Embedded C: PIC32 Uart Driver and Protocol <br />
                     FPGA: Slug Invaders Game <br />
-                    CAD: Autotiller</h1>
+                    Control and CAD: Autotiller</h1>
                 {/* <p className="text-xl text-muted-foregrounnd">
                 </p> */}
                 </div>
