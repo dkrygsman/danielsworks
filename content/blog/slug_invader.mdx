@@ -12,7 +12,7 @@ published: true
 ### Approach
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Slug invaders consists of many moving parts when refering to digital components such as counters, multiplexers, ring/non-ring selectors, etc. All of these components were coded intirely from scratch and properly tested with timing diagrams and used throughout the course for this project. For the sake of relivance I will only be describing in detail the high components such as the state machines. \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The most central verilog file is RGB_still.v with all state machines and pixel coloring. The coloring is done by defineing the RGB colors based on the horizontal and verticle pixel addresses which are incremented by respective counters. The main approch is by setting a counter for the player and all ships and performing logic equations that refer to the pixel address and color pixels if desired. Logic for addresses of ships, boarders, points, and the player is used for the games state machine responsible for incrementing score, gaining points, or ending the game. \
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The most central verilog file is RGB_still.v with all state machines and pixel coloring. The coloring is done by defineing the RGB colors based on the horizontal and verticle pixel addresses which are incremented by respective counters. The main approch is by setting a counter for the player and all ships and performing logic equations that refer to the pixel address and color pixels if desired. Logic for addresses of ships, boarders, points, and the player is used for the games state machine responsible for incrementing score, gaining points, or ending the game. 
 
 ### State Machines
 
