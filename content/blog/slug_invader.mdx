@@ -12,7 +12,12 @@ published: true
 ### Approach
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Slug invaders consists of many moving parts when refering to digital components such as counters, multiplexers, ring/non-ring selectors, etc. All of these components were coded intirely from scratch and properly tested with timing diagrams and used throughout the course for this project. For the sake of relivance I will only be describing in detail the high components such as the state machines. \
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The most central verilog file is RGB_still.v with all state machines and pixel coloring. The coloring is done by defineing the RGB colors based on the horizontal and verticle pixel addresses which are incremented by respective counters. The main approch is by setting a counter for the player and all ships and performing logic equations that refer to the pixel address and color pixels if desired. Logic for addresses of ships, boarders, points, and the player is used for the games state machine responsible for incrementing score, gaining points, or ending the game. \
+
+### State Machines
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This game consists of many specific requirements and my approach to meeting them was to split up the logic into six different state machines. There is a "big" state machine that controlls 5 identital other "ship" state machines. The "ship" state machine has states chill, falling, still, still2, ship hit, freeze, flash occupant, and occupant only. The point is often refered to as the ship occupant. The big state machine on the other hand has states chill, release ship A, release ship B, and so on until ship E, and restart game. The abstraction allows for easier development where the ship state machine can be perfected by itself before adding multiple instances. They also work together well because the ship location and what size the ship is, is determined by flip flops storing clock selected selectors. This makes the combination of ship size and location dependent on when the game was started and a MHz clock which is essentially random. Each instance of the ship state machine has their own instance of the RGB ship module or verilog function, and and instance of their own time counter. 
+
 
 <p align="center">
     [Github Repo](https://github.com/dkrygsman/slug_invaders 'The best place on the internet')
