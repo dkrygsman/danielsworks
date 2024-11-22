@@ -12,7 +12,7 @@ interface PostItemProps{
 }
 
 export function PostItem({slug, title, description,date}: PostItemProps) {
-    return <article className="bg-[url('/img/charliepic.JPEG.jpeg')] flex flex-col gap-2 border-border border-b py-3">
+    return <article className="bg-[url('/img/charliepic.JPEG')] flex flex-col gap-2 border-border border-b py-3">
         <div>
             <h2 className="text-2xl font-bold">
                 <Link href={slug}>{title}</Link>
