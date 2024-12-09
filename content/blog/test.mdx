@@ -7,6 +7,6 @@ published: true
  
  ### Introduction 
 
-test test
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This project is my most extensive dive into feedback control, in this case based on attidue via an 9-DOF fusion IMU. I have toyed around with the idea of a hardcoded drone flight controller, but with my interest in sailing and my access to a small sailboat (19' west wight potter) this seemed as a natural first step. The autotiller is a PID controlled feedback system which depending on a sailboats yaw attitude rotation, or horizontal heading, pushes or pulls the boats tiller (which controls stearing) to correct its course. The project consists of a 3d modeled linear actuator which uses a ten turn pot as a position encoder, controlled by a one axis PID controller running on a STM32 Nucleo microcontroller programmed on STM32 Cube IDE. I am using the BNO055 IMU breakout board from adafruit and an open source library from Daniel Mironow. 
 
 
