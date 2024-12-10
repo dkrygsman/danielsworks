@@ -1,11 +1,11 @@
 ---
-title: Autotiller
-description: PID Controlled Autotiller Project
-date: 2024-06-13
-published: true
+title: Autotiller 
+description: PID Controlled Autotiller Project 
+date: 2024-03-04
+published: false
 ---
- 
- ### Introduction 
+
+### Introduction 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This project is my most extensive dive into feedback control, in this case based on attidue via an 9-DOF fusion IMU. I have toyed around with the idea of a hardcoded drone flight controller, but with my interest in sailing and my access to a small sailboat (19' west wight potter) this seemed as a natural first step. The autotiller is a PID controlled feedback system which depending on a sailboats yaw attitude rotation, or horizontal heading, pushes or pulls the boats tiller (which controls stearing) to correct its course. The project consists of a 3d modeled linear actuator which uses a ten turn pot as a position encoder, controlled by a one axis PID controller running on a STM32 Nucleo microcontroller programmed on STM32 Cube IDE. I am using the BNO055 IMU breakout board from adafruit and an open source library from Daniel Mironow. 
 
@@ -13,6 +13,20 @@ published: true
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linear actuator was designed based off slide potentiometer linear actuator where the position is encoded with a slide pot, but with a ten turn potentiometer for encoding which can be belt driven. The body and some of the gears were modeled on fusion 360 and 3d printed on an Ender V3 and Bambu Labs A1 3d printers. The threaded rod (like ones used for 3d printers) is installed through two bearings for decreased friction. The motor is also held by a 3d modeled and printed base and drives the threaded rod via 3d printer timing belts. The model took multiple iterations to get to where it is now, with changes improving it's action. 
 
+<p align="center">
+    ![line act v1 img](line_act_v1.png)
+ Linear Actuator First Design  
+</p>
+
+<p align="center">
+    ![line act v1 img](linear_act_final.png)
+ Linear Actuator Final Design  
+</p>
+
+<p align="center">
+    ![line act img](line.JPG)
+ Linear Actuator set up with parts and belts
+</p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pictures and demo video to come.
 
@@ -28,4 +42,23 @@ published: true
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This project is eventually going to be tested on a sailboat and must be properly enclosed and powered. I developed a plexiglass case for the linear actuator (clear plexiglassto show off my design) with all brackets 3d printed and strengthened with 3M threaded inserts. I also 3D modeled enclosures for the STM32 and the sensor, offset pot, and oled. The BNO055 breakout board and OLED are held in with female header pins for easy removal. All power and date pins are connected via JST connectors. 
 
+<p align="center">
+    ![line act img](sensor_box_wiring.JPG)
+ Sensor Enclosure Wiring
+</p>
 
+<p align="center">
+    ![line act img](sensor_box.JPG)
+ Sensor Enclosure
+</p>
+
+<p align="center">
+    ![line act img](autotiller_testing.JPG)
+ All Enclosures 
+</p>
+
+<p align="center">
+    [Github Repo](https://github.com/dkrygsman/autotiller/tree/main 'Here')
+</p>
+
+test test
