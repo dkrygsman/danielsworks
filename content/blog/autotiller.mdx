@@ -34,6 +34,55 @@ published: true
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second project, line_act, consists of the single axis (Yaw) PID controller. The project was developed using 3 analog inputs for potentiometers to set the k_p, k_i, and k_d constants, but later set as constants when combined with the push-pull functions. I also configured two I2C connections, one for the BNO055 IMU one for an OLED screen for displaying values, and a timer to output a PWM signal to a servo. The servo was temporary and was only used to tune the PID controller and find the optimum k_p, k_i, and k_d constants. 
 
+```js showLineNumbers
+	  bno.euler(&bno, &eul);			
+	  yaw = (int)eul.yaw;				//populate yaw with euler.yaw value 
+	  yaw = (yaw + 180) % 360;			//modulus for setting first value to 180 instead of 0 
+	  new_yaw = yaw + offset_pot;		//shifting the heading based off offset
+
+	  heading_set_point = 180;
+
+	  heading = new_yaw;
+	  heading_error = heading_set_point - heading;
+	  PID_p = kp * heading_error;						//proportional component
+
+	  heading_difference = heading_error - heading_prev_error;
+	  PID_d = kd * ((heading_error - heading_prev_error)/ period);		//derivative component
+
+	  if(heading_error > -3 && heading_error < 3)
+	  {
+		  PID_i = PID_i + (ki * heading_error);				//integral component 
+	  }
+	  else
+	  {
+		  PID_i = 0;
+	  }
+
+	  PID_total = PID_p + PID_i + PID_d;		//combining P, I, and D components 
+
+
+
+    //	  printf("%f  %f  %f  %f  %f\r\n", PID_p, PID_i, PID_d, PID_total, heading_error);
+    //	  fflush(stdout);
+    //	  HAL_Delay(2);
+
+    //	  printf("%f\t", PID_total);
+    //	  fflush(stdout);
+    //	  HAL_Delay(2);
+
+	  PID_total = remap_val(PID_total, -3000, 3000, -400, 1600); 		//remapping values for range and sensitivity 
+	  feedback_pot = remap_val(feedback_pot, 0, 4100, 101, 1099);	//limits set at 130 and 1070
+
+	  if(PID_total < -200)			//PID limits 
+	  {
+		  PID_total = -200;
+	  }
+	  if(PID_total > 1400)
+	  {
+		  PID_total = 1400;
+	  
+```
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With both separate projects coded and adequately tested, they are combined in the autotiller project. The final project included 2 analog inputs for the feedback (ten-turn) pot and the offset pot. Two I2C connections for the BNO055 IMU and the OLED displaying the yaw or heading, and the offset value. Lastly, the project included two GPIO output pins for driving the motor via the H-bridge. The offset is added because of the nature of sailing, when under wind power, a sailboat has forces such as the wind pushing the sail and the displacing or cutting force of the keel and water. These forces make the equilibrium of the tiller position a little off-center to keep course. Working on the project in two different parts and then combining them allowed for some abstraction that helped with development. 
 
 ### Enclosure
