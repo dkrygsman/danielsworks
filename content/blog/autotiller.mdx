@@ -17,5 +17,11 @@ published: true
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linear actuators code was developed on the STM32 Nucleo f411re development board and the STM32 Cube IDE. The project was initially made as two seperate parts, push pull which just consists of functions needed to controlled the pushing and pulling of the arm, and line_act which consists of the PID controller. The main function in the push pull project is linear_set() is a three state state machine which its states are chill, push, and pull. This function outputs to two GPIO pins which connect to the H-bridge. The function sets these pins based off a target value, and pot value (from the ten turn pot for feedback).  
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With both seperate projects coded and adiquitely tested, they are combined in the autotiller project. The final project included 2 analog inputs for the feedback (ten turn) pot, and the offset pot. Two I2C connections for the BNO055 IMU and the oled displaying the yaw or heading, and the offset value. lastly the project included two GPIO output pins for driving the motor via the H-bridge. The offset is added because of the nature of sailing, when under wind power, a sailboat has forces such as the wind pushing the sail and the displacing or cutting force of keel and water. These forces make the equilibrium of tiller position a little off center to keep course. Working on the project in two different parts then combining allowed for some abstraction that helped with development. 
+
+### Enclosure
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This project is eventually going to be tested on a sailboat and must be properly enclosed and powered. I developed a plexiglass case for the linear actuator (clear plexiglassto show off my design) with all brackets 3d printed and strengthened with 3M threaded inserts. I also 3D modeled enclosures for the STM32 and the sensor, offset pot, and oled. The BNO055 breakout board and OLED are held in with female header pins for easy removal. All power and date pins are connected via JST connectors. 
+
 
 
