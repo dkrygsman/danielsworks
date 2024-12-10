@@ -13,5 +13,9 @@ published: true
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linear actuator was designed based off slide potentiometer linear actuator where the position is encoded with a slide pot, but with a ten turn potentiometer for encoding which can be belt driven. The body and some of the gears were modeled on fusion 360 and 3d printed on an Ender V3 and Bambu Labs A1 3d printers. The threaded rod (like ones used for 3d printers) is installed through two bearings for decreased friction. The motor is also held by a 3d modeled and printed base and drives the threaded rod via 3d printer timing belts. The model took multiple iterations to get to where it is now, with changes improving it's action. 
 
+### Code
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linear actuators code was developed on the STM32 Nucleo f411re development board and the STM32 Cube IDE. The project was initially made as two seperate parts, push pull which just consists of functions needed to controlled the pushing and pulling of the arm, and line_act which consists of the PID controller. The main function in the push pull project is linear_set() is a three state state machine which its states are chill, push, and pull. This function outputs to two GPIO pins which connect to the H-bridge. The function sets these pins based off a target value, and pot value (from the ten turn pot for feedback).  
+
 
 
