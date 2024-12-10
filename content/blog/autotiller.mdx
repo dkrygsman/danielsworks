@@ -80,7 +80,13 @@ published: true
 	  if(PID_total > 1400)
 	  {
 		  PID_total = 1400;
-	  
+      }
+
+    //	  printf("%f\r\n", PID_total);
+    //	  fflush(stdout);
+    //	  HAL_Delay(2);
+
+	  linear_set(feedback_pot, GPIOC, GPIO_PIN_7, GPIOA, GPIO_PIN_9, PID_total);
 ```
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With both separate projects coded and adequately tested, they are combined in the autotiller project. The final project included 2 analog inputs for the feedback (ten-turn) pot and the offset pot. Two I2C connections for the BNO055 IMU and the OLED displaying the yaw or heading, and the offset value. Lastly, the project included two GPIO output pins for driving the motor via the H-bridge. The offset is added because of the nature of sailing, when under wind power, a sailboat has forces such as the wind pushing the sail and the displacing or cutting force of the keel and water. These forces make the equilibrium of the tiller position a little off-center to keep course. Working on the project in two different parts and then combining them allowed for some abstraction that helped with development. 
