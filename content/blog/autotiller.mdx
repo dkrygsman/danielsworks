@@ -28,6 +28,8 @@ published: true
     Linear Actuator set up with parts and belts
 </p>
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All 3D modeled components are included in the github repo mentioned at the end of this article in the stl files folder.
+
 ### Code
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The linear actuators code was developed on the STM32 Nucleo f411re development board and the STM32 Cube IDE. The project was initially made as two separate parts, push-pull which just consists of functions needed to control the pushing and pulling of the arm, and line_act which consists of the PID controller. The main function in the push-pull project is linear_set() is a three-state state machine whose states are chill, push, and pull. This function outputs to two GPIO pins which connect to the H-bridge. The function sets these pins based on a target value, and pot value (from the ten-turn pot for feedback). 
@@ -113,6 +115,8 @@ published: true
 <p align="center">
     [Autotiller Github Repo](https://github.com/dkrygsman/autotiller/tree/main 'Here')
 </p>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All 3D modeled enclosures are included in the github repo mentioned at the end of this article in the stl files folder.
 
 ### Demo Video 
 
